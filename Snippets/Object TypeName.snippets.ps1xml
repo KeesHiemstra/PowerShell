@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8' ?>
+    <Snippets  xmlns='http://schemas.microsoft.com/PowerShell/Snippets'>
+        <Snippet Version='1.0.0'>
+            <Header>
+                <Title>Object TypeName</Title>
+                <Description>Add TypeName to a self created object</Description>
+                <Author>Kees Hiemstra</Author>
+                <SnippetTypes>
+                    <SnippetType>Expansion</SnippetType>
+                </SnippetTypes>
+            </Header>
+
+            <Code>
+                <Script Language='PowerShell' CaretOffset='4'>
+                    <![CDATA[$Obj.PSObject.TypeNames.Insert(0, '')]]>
+                </Script>
+            </Code>
+
+    </Snippet>
+</Snippets>
+
