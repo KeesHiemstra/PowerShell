@@ -11,7 +11,7 @@
             </Header>
 
             <Code>
-                <Script Language='PowerShell' CaretOffset='1667'>
+                <Script Language='PowerShell' CaretOffset='1651'>
                     <![CDATA[<#
 .SYNOPSIS
     Short description
