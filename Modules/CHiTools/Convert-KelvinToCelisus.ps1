@@ -8,7 +8,7 @@
     Kelvin is the temparature measured of the absolute zero.
 
 .EXAMPLE
-    PS> Convert-KelvinToCelsius -Kelvin 294.65
+    Convert-KelvinToCelsius -Kelvin 294.65
     ---
     21.5
 
@@ -27,7 +27,6 @@
 .FUNCTIONALITY
 .LINK
 .LINK
-.REMARKS
 #>
 function Convert-KelvinToCelsius
 {

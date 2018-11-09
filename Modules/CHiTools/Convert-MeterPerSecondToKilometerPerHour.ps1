@@ -26,7 +26,6 @@
 .FUNCTIONALITY
 .LINK
 .LINK
-.REMARKS
 #>
 function Convert-MeterPerSecondToKilometerPerHour
 {

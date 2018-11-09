@@ -8,12 +8,12 @@
     Unix date/time is stored the number of seconds since 1970-01-01 as integer. 
 
 .EXAMPLE
-    PS> 1540738500 | Convert-UnixIntToDateTime
+    1540738500 | Convert-UnixIntToDateTime
     ---
     zondag 28 oktober 2018 15:55:00
 
 .EXAMPLE
-    PS> Convert-UnixIntToDateTime -UnixInt 1540738500 -UtcTime
+    Convert-UnixIntToDateTime -UnixInt 1540738500 -UtcTime
     ---
     zondag 28 oktober 2018 14:55:00
 
@@ -26,7 +26,7 @@
 
     === Version history
     Version 1.00 (2018-11-09, Kees Hiemstra)
-    - Initial version
+    - Initial version.
 
 .COMPONENT
     This component is part the weather information.
@@ -34,8 +34,8 @@
 .ROLE
 .FUNCTIONALITY
 .LINK
+    Read about Unix time at https://en.wikipedia.org/wiki/Unix_time
 .LINK
-.REMARKS
 #>
 function Convert-UnixIntToDateTime
 {
