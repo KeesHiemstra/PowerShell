@@ -70,11 +70,7 @@ function Convert-UnixIntToDateTime
         
         if (-not $UtcTime)
         {
-            # Calculate the difference between the Utc time and the local time
-            $UtcDiff = Get-Date
-            $UtcDiff = $UtcDiff - $UtcDiff.ToUniversalTime()
-
-            $Result = $Result.AddSeconds($UtcDiff.TotalSeconds)
+            $Result = $Result.AddMinutes((Get-TimeZone).BaseUtcOffset.TotalMinutes)
         }
 
         Write-Output $Result

@@ -3,10 +3,12 @@
 <#
 .SYNOPSIS
     Get the TypeName(s) of the object.
+
 .DESCRIPTION
     Get-Member shows the TypeName(s) of an object(s). If you are only looking the TypeName, you scroll often and you not will
     notice then has more types.
     Get-TypeName will return only the unique TypeNames.
+
 .EXAMPLE
     PS> Get-ChildItem -Path 'C:\' -Force | Get-TypeName
     ---
@@ -14,12 +16,15 @@
     System.IO.FileInfo
 
 .INPUTS
-    Inputs to this cmdlet (if any)
+    [Object]
+
 .OUTPUTS
     [String[]]
+
 .NOTES
     Version 1.00 (2018-11-07, Kees Hiemstra)
     - Initial version.
+    
 .COMPONENT
 
 .ROLE
@@ -40,7 +45,7 @@ function Get-TypeName
     [OutputType([String[]])]
     Param
     (
-        # Param1 help description
+        # Object to discover the TypeName(s)
         [Parameter(Mandatory=$false, 
                    ValueFromPipeline=$true,
                    ValueFromPipelineByPropertyName=$true, 

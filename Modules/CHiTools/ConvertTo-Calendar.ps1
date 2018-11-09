@@ -29,7 +29,7 @@ function ConvertTo-Calendar
     [OutputType([String])]
     Param
     (
-        # Param1 help description
+        # Convert of the object to list the members
         [Parameter(Mandatory=$true, 
                    ValueFromPipeline=$true,
                    ValueFromPipelineByPropertyName=$true, 
