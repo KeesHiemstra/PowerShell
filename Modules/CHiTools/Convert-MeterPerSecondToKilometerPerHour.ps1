@@ -1,16 +1,15 @@
-﻿#region Convert-KelvinToCelisus
+﻿#region Convert-MeterPerSecondToKilometerPerHour
 
 <#
 .SYNOPSIS
-    Convert Kelvin [K] to Celsius degrees [°C]
+    Convert speed in meter per second [m/s] to kilometer per hour [km/h].
 
 .DESCRIPTION
-    Kelvin is the temparature measured of the absolute zero.
 
 .EXAMPLE
-    PS> Convert-KelvinToCelsius -Kelvin 294.65
+    PS> Convert-MeterPerSecondToKilometerPerHour -MeterPerSecond 7.7
     ---
-    21.5
+    27.72
 
 .OUTPUTS
     [decimal]
@@ -29,7 +28,7 @@
 .LINK
 .REMARKS
 #>
-function Convert-KelvinToCelsius
+function Convert-MeterPerSecondToKilometerPerHour
 {
     [CmdletBinding(DefaultParameterSetName='Parameter Set 1', 
                    SupportsShouldProcess=$false, 
@@ -38,7 +37,7 @@ function Convert-KelvinToCelsius
     [OutputType([decimal])]
     Param
     (
-        # Tempature in [K] (Kelvin)
+        # Wind speed in [m/s]
         [Parameter(Mandatory=$true, 
                    ValueFromPipeline=$true,
                    ValueFromPipelineByPropertyName=$true, 
@@ -46,12 +45,12 @@ function Convert-KelvinToCelsius
                    Position=0,
                    ParameterSetName='Parameter Set 1')]
         [ValidateNotNullOrEmpty()]
-        $Kelvin
+        $MeterPerSecond
     )
 
     Process
     {
-        Write-Output ($Kelvin - 273.15)
+        Write-Output ($MeterPerSecond * 3.6)
     }
 }
 
