@@ -24,8 +24,12 @@
     The PowerShell [datetime] variable doesn't contains the time zone.
     This is calculated in the function.
 
+    === Version history
+    Version 1.00 (2018-11-09, Kees Hiemstra)
+    - Initial version
+
 .COMPONENT
-    This component belongs the weather information.
+    This component is part the weather information.
 
 .ROLE
 .FUNCTIONALITY
