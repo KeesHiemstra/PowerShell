@@ -8,9 +8,9 @@
     This function works like Format-Table, but the output is an object that can be used by for example ConvertTo-HTML.
 
 .EXAMPLE
-    Get-Service | Where-Object { $_.Name -like 'BITS' } | Convert-ObjectToList
-
-    >>---
+    PS> Get-Service | Where-Object { $_.Name -like 'BITS' } | Convert-ObjectToList
+    ---
+    
     Property            Value1                                 
     --------            ------                                 
     Name                BITS                                   
@@ -31,9 +31,10 @@
     Container                                                  
 
 .EXAMPLE
-    Get-Service | Where-Object { $_.Name -like 'Lan*' } | Convert-ObjectToList 
-
-    >>The first column will be the list of all properties, the following columns (Value1, Value2) will show the content.
+    PS> Get-Service | Where-Object { $_.Name -like 'Lan*' } | Convert-ObjectToList
+    ---
+    >> The first column will be the list of all properties, the following columns (Value1, Value2) will show the content.
+    
     Property            Value1            Value2                         
     --------            ------            ------                         
     Name                LanmanServer      LanmanWorkstation              
@@ -54,14 +55,15 @@
     Container                                                            
 
 .EXAMPLE
-    Get-Service | Where-Object { $_.Name -like 'Lan*' } | Convert-ObjectToList | ConvertTo-Html
-
+    PS> Get-Service | Where-Object { $_.Name -like 'Lan*' } | Convert-ObjectToList | ConvertTo-Html
+    ---
     >> Will convert the data in an HTML table where the properties are listes as rows.
 
 .EXAMPLE
-    Get-Service | Convert-ObjectToList -MaximumSize 3 -ExcludeProperty @('RequiredServices', 'DependentServices','ServicesDependedOn', 'ServiceHandle', 'Site', 'Container')
-
+    PS> Get-Service | Convert-ObjectToList -MaximumSize 3 -ExcludeProperty @('RequiredServices', 'DependentServices','ServicesDependedOn', 'ServiceHandle', 'Site', 'Container')
+    ---
     >> Maximizes the number of columns to 4 (first column contains the property name) and exclude unwanted properties.
+    
     Property            Value1                       Value2                 Value3                           
     --------            ------                       ------                 ------                           
     Name                AdobeARMservice              AeLookupSvc            ALG                              
@@ -73,21 +75,29 @@
     ServiceName         AdobeARMservice              AeLookupSvc            ALG                              
     Status              Running                      Stopped                Stopped                          
     ServiceType         Win32OwnProcess              Win32ShareProcess      Win32OwnProcess                  
-    StartType           Automatic                    Manual                 Manual                           
+    StartType           Automatic                    Manual                 Manual   
+    
 .INPUTS
     [System.Management.Automation.PSObject]
+
 .OUTPUTS
     [System.Management.Automation.PSObject]
+
 .NOTES
     === Version history
+    Version 1.01 (2018-11-09, Kees Hiemstra)
+    - Updated help.
     Version 1.00 (2017-01-06, Kees Hiemstra)
-    - Initial version
+    - Initial version.
+
 .COMPONENT
     Tools
+
 .ROLE
 
 .FUNCTIONALITY
     Conversion
+
 #>
 function Convert-ObjectToList
 {

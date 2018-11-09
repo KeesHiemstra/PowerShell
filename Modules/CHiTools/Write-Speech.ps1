@@ -3,13 +3,15 @@
 <#
 .SYNOPSIS
     Use text to speech to read the message out loud.
+
 .DESCRIPTION
 
 .EXAMPLE
-    Write-Speech -Message "The task is completed at $((Get-Date).ToString('hh:mm'))"
-
+    PS> Write-Speech -Message "The task is completed at $((Get-Date).ToString('hh:mm'))"
     ---
+
     "The taks is completed at <current time>" will be spoken out loud.
+
 .NOTES
     === Version history
     Version 1.00 (2017-04-24, Kees Hiemstra)
