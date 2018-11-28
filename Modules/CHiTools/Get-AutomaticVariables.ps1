@@ -13,6 +13,11 @@
 
     Returns the list names of Automatic created variables.
 
+.EXAMPLE
+    Get-AutomaticVariables -Include *
+
+    Returns a emply list.
+
 .INPUTS
     None
 
@@ -47,66 +52,83 @@ function Get-AutomaticVariables
     [OutputType([String[]])]
     Param
     (
+        # Specifies an array of items that this cmdlet excludes from the automatic variables. Wildcards are permitted.
+        [Parameter(Mandatory=$False,
+                   Position=0,
+                   ParameterSetName='Parameter Set 1')]
+        [string[]]
+        $Include
     )
 
     Process
     {
-        Write-Output (@('?', 
-                        'args', 
-                        'ConfirmPreference', 
-                        'ConsoleFileName', 
-                        'DebugPreference', 
-                        'Error', 
-                        'ErrorActionPreference',
-                        'ErrorView', 
-                        'ExecutionContext', 
-                        'LASTEXITCODE', 
-                        'false', 
-                        'foreach', 
-                        'FormatEnumerationLimit', 
-                        'HOME', 
-                        'Host', `
-                        'InformationPreference',
-                        'input', 
-                        'MaximumAliasCount', 
-                        'MaximumDriveCount', 
-                        'MaximumErrorCount', 
-                        'MaximumFunctionCount', 
-                        'MaximumHistoryCount', 
-                        'MaximumVariableCount', 
-                        'Matches', 
-                        'MyInvocation',
-                        'NestedPromptLevel', 
-                        'null', 
-                        'OutputEncoding', 
-                        'PID', 
-                        'profile', 
-                        'ProgressPreference', 
-                        'PSBoundParameters', 
-                        'PSCmdlet', 
-                        'PSCommandPath', 
-                        'PSCulture', 
-                        'PSDefaultParameterValues', 
-                        'PSEdition', 
-                        'psISE', 
-                        'PSItem', 
-                        'PSEmailServer', 
-                        'PSHOME', 
-                        'PSSessionApplicationName', 
-                        'PSSessionConfigurationName', 
-                        'PSSessionOption', 
-                        'PSUICulture', 
-                        'PSScriptRoot', 
-                        'psUnsupportedConsoleApplications', 
-                        'PSVersionTable', 
-                        'PWD', 
-                        'ShellId',
-                        'StackTrace', 
-                        'true', 
-                        'VerbosePreference', 
-                        'WarningPreference', 
-                        'WhatIfPreference'
-                     ))
+        $AllExclude = (@('?', 
+                         'args', 
+                         'ConfirmPreference', 
+                         'ConsoleFileName', 
+                         'DebugPreference', 
+                         'Error', 
+                         'ErrorActionPreference',
+                         'ErrorView', 
+                         'ExecutionContext', 
+                         'LASTEXITCODE', 
+                         'false', 
+                         'foreach', 
+                         'FormatEnumerationLimit', 
+                         'HOME', 
+                         'Host', `
+                         'InformationPreference',
+                         'input', 
+                         'MaximumAliasCount', 
+                         'MaximumDriveCount', 
+                         'MaximumErrorCount', 
+                         'MaximumFunctionCount', 
+                         'MaximumHistoryCount', 
+                         'MaximumVariableCount', 
+                         'Matches', 
+                         'MyInvocation',
+                         'NestedPromptLevel', 
+                         'null', 
+                         'OutputEncoding', 
+                         'PID', 
+                         'profile', 
+                         'ProgressPreference', 
+                         'PSBoundParameters', 
+                         'PSCmdlet', 
+                         'PSCommandPath', 
+                         'PSCulture', 
+                         'PSDefaultParameterValues', 
+                         'PSEdition', 
+                         'psISE', 
+                         'PSItem', 
+                         'PSEmailServer', 
+                         'PSHOME', 
+                         'PSSessionApplicationName', 
+                         'PSSessionConfigurationName', 
+                         'PSSessionOption', 
+                         'PSUICulture', 
+                         'PSScriptRoot', 
+                         'psUnsupportedConsoleApplications', 
+                         'PSVersionTable', 
+                         'PWD', 
+                         'ShellId',
+                         'StackTrace', 
+                         'true', 
+                         'VerbosePreference', 
+                         'WarningPreference', 
+                         'WhatIfPreference'
+                      ))
+
+        [array]$AllInclude = @()
+        foreach ($Exclude in $Include)
+        {
+            foreach ($ExcludeName in ($AllExclude -like $Exclude))
+            {
+                $AllInclude += @($ExcludeName)
+            }
+        }
+
+        Write-Output ($AllExclude | Where-Object { $_ -notin $AllInclude })
     }
 }
 
